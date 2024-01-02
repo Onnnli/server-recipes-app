@@ -3,8 +3,6 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cors from "cors";
 import bodyParser from "body-parser";
-import multer from 'multer';
-import path from 'path';
 
 
 import api from './api/index.js';

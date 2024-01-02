@@ -66,8 +66,21 @@ router.post('/user/:userId/upload-photo', upload.single('image'), async (req, re
   }
 
 
-  return res.status(200).json({ data, token: `${data.email}_${data.password}` })
+  return res.status(200).json({ data, token: `${data.email}_${data.password}` });
+})
 
-  return res.status(200);
+
+router.get('/recipes/user/:userId',async (req, res) =>{
+  const userId = req.params.userId;
+
+  const data =  await UserModel.findOne({
+    id_user: userId,
+  })
+
+  if(!data) {
+    return res.status(401).json('Something went wrong!');
+  }
+
+  return res.status(200).json(data)
 })
 export default router;
